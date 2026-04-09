@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam - Online Examination System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="timer" id="timer">01:15</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo" th:text="${studentName}">Student</div>
+            <p class="subtitle">Answer all 10 questions within 75 seconds</p>
+        </div>
+
+        <form id="examForm" action="/submit-exam" method="post">
+            <input type="hidden" name="studentId" th:value="${studentId}">
+
+            <div class="card">
+                <div th:each="question, iter : ${questions}" class="question">
+                    <p class="question-text" th:text="${iter.index + 1} + '. ' + ${question.text}"></p>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" th:name="'q' + ${question.id}" value="A" required>
+                            <span th:text="'A. ' + ${question.opA}"></span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" th:name="'q' + ${question.id}" value="B">
+                            <span th:text="'B. ' + ${question.opB}"></span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" th:name="'q' + ${question.id}" value="C">
+                            <span th:text="'C. ' + ${question.opC}"></span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" th:name="'q' + ${question.id}" value="D">
+                            <span th:text="'D. ' + ${question.opD}"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Exam</button>
+        </form>
+    </div>
+
+    <script>
+        let timeLeft = 75;
+        const timerDisplay = document.getElementById('timer');
+        const examForm = document.getElementById('examForm');
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = 
+                (minutes < 10 ? '0' : '') + minutes + ':' + 
+                (seconds < 10 ? '0' : '') + seconds;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                examForm.submit();
+            }
+        }, 1000);
+
+        examForm.addEventListener('submit', () => {
+            clearInterval(countdown);
+        });
+    </script>
+</body>
+</html>

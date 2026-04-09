@@ -1,0 +1,275 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #FFFFFF;
+    color: #000000;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.3rem; }
+
+.card {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 0 #000000;
+}
+
+.btn {
+    display: inline-block;
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.btn:hover {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.btn-primary {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background: #222222;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #000000;
+    font-size: 1rem;
+    background: #FFFFFF;
+    color: #000000;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #000000;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.toggle-btn {
+    padding: 15px 40px;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn.active {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.toggle-btn:hover:not(.active) {
+    background: #F5F5F5;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.timer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #000000;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+.question {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.question-text {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-label:hover {
+    background: #F5F5F5;
+}
+
+.option-label input {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    accent-color: #000000;
+}
+
+.result-card {
+    text-align: center;
+    padding: 50px;
+}
+
+.score {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.review-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.review-item {
+    padding: 15px;
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+}
+
+.review-item.correct {
+    border-left: 4px solid #000000;
+}
+
+.review-item.wrong {
+    border-left: 4px solid #666666;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    border: 1px solid #000000;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background: #000000;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.table tr:nth-child(even) {
+    background: #F5F5F5;
+}
+
+.insight-card {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #000000;
+    background: #F5F5F5;
+}
+
+.insight-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.insight-item:last-child {
+    border-bottom: none;
+}
+
+.error {
+    color: #000000;
+    background: #F5F5F5;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666666;
+    font-size: 1rem;
+}

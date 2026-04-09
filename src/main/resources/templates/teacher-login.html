@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login - Online Examination System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">TEACHER</div>
+            <p class="subtitle">Analytics Dashboard</p>
+        </div>
+
+        <div class="card">
+            <h2>Login</h2>
+            <p class="subtitle">Default password: 123</p>
+            <div th:if="${error}" class="error" th:text="${error}"></div>
+            <form action="/teacher-login" method="post">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="/" class="btn">Back</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

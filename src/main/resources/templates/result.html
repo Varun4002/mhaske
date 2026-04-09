@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Online Examination System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">RESULT</div>
+            <p class="subtitle" th:text="${student != null} ? (${student.name} + ' - ' + ${student.rollNo}) : 'Exam Completed'"></p>
+        </div>
+
+        <div th:if="${error}" class="error" th:text="${error}"></div>
+
+        <div class="card result-card">
+            <h2>Your Score</h2>
+            <div class="score" th:text="${score} + '/' + ${total}"></div>
+            <p th:text="${score >= 7} ? 'Excellent Performance!' : (${score >= 5} ? 'Good Job!' : 'Keep Practicing!')"></p>
+        </div>
+
+        <div class="review-section" th:if="${questions != null}">
+            <h3>Review Your Answers</h3>
+            <div th:each="question, iter : ${questions}" class="review-item"
+                 th:classappend="${answers['q' + question.id] == question.correctAns} ? 'correct' : 'wrong'">
+                <p><strong th:text="${iter.index + 1} + '. ' + ${question.text}"></strong></p>
+                <p>Your Answer: <span th:text="${answers['q' + question.id] ?: 'Not Answered'}"></span></p>
+                <p>Correct Answer: <span th:text="${question.correctAns}"></span></p>
+            </div>
+        </div>
+
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Online Examination System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">TEACHER DASHBOARD</div>
+            <p class="subtitle">Analytics & Insights</p>
+        </div>
+
+        <div class="card">
+            <h2>Student Scores</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Roll No</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="student : ${students}">
+                        <td th:text="${student.id}"></td>
+                        <td th:text="${student.name}"></td>
+                        <td th:text="${student.rollNo}"></td>
+                        <td th:text="${student.score} + '/10'"></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(students)}">
+                        <td colspan="4" style="text-align: center;">No students yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card insight-card">
+            <h3>Insights - Questions with Most Misses</h3>
+            <div th:each="insight : ${insights}" class="insight-item">
+                <span th:text="'Question #' + ${insight.questionId}"></span>
+                <span th:text="${#numbers.formatDecimal(insight.missPercentage, 1, 1)} + '% missed (' + ${insight.wrongAttempts} + '/' + ${insight.totalAttempts} + ' attempts)'"></span>
+            </div>
+            <p th:if="${#lists.isEmpty(insights)}" style="text-align: center; padding: 20px;">
+                No data available yet. Students need to complete exams first.
+            </p>
+        </div>
+
+        <a href="/" class="btn">Logout</a>
+    </div>
+</body>
+</html>
